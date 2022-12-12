@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import cellEditFactory, { Type } from "react-bootstrap-table2-editor";
-import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
+import filterFactory/*, { textFilter }*/ from "react-bootstrap-table2-filter";
+import ExportButton from "./ExportButton";
 
 function Table() {
   const [data, setData] = useState([]);
@@ -68,23 +69,25 @@ function Table() {
   };
 
   return (
-    <div className="App">
-      <BootstrapTable
-        keyField="id"
-        data={data}
-        columns={columns}
-        striped
-        hover
-        condensed
-        pagination={paginationFactory(options)}
-        cellEdit={cellEditFactory({
-          mode: "click",
-          blurToSave: true
-        })}
-        selectRow={selectRow}
-        filter={filterFactory()}
-
-      />
+    <div>
+      <div className="App">
+        <BootstrapTable
+          keyField="id"
+          data={data}
+          columns={columns}
+          striped
+          hover
+          condensed
+          pagination={paginationFactory(options)}
+          cellEdit={cellEditFactory({
+            mode: "click",
+            blurToSave: true
+          })}
+          selectRow={selectRow}
+          filter={filterFactory()}
+        />
+        <ExportButton />
+      </div>
     </div>
   );
 }

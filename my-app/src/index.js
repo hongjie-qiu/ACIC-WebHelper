@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import NavBar from './NavBar.js';
-import Table from './BootstrapTable.js';
+import HomePage from './App';
+import NavBar from './NavBar';
+import TablePage from './BootstrapTable';
 import { AppProvider } from './contexts';
 import reportWebVitals from './reportWebVitals';
-import {  BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,8 +16,8 @@ root.render(
     <NavBar/>
      <BrowserRouter>
        <Routes>
-        <Route path = "/" element = {<App />} />
-        <Route path = "/table" element = {<Table />} />
+        <Route path = "/" element = {<HomePage />} />
+        <Route path = "/results" element = {<TablePage />} />
        </Routes>
      </BrowserRouter>
     </AppProvider>
