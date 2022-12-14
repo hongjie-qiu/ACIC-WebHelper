@@ -27,6 +27,13 @@ function ExportButton() {
                 }
             }
 
+            if (closingBracketCount < openingBracketCount) {
+                // add in missing number of closing brackets at the end
+                for (let k = 0; k < openingBracketCount - closingBracketCount; k++) {
+                    formattedStr += "}";
+                }
+            }
+
             fileContent += formattedStr + "\n\n";
         }
 
