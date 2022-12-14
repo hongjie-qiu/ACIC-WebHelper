@@ -3,64 +3,76 @@ import { useState, useEffect } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import cellEditFactory, { Type } from "react-bootstrap-table2-editor";
-import filterFactory/*, { textFilter }*/ from "react-bootstrap-table2-filter";
 import ExportButton from "./ExportButton";
+import example from "./example.json";
+import { useGlobalContext } from './contexts';
 
 function Table() {
+  const {articleData} = useGlobalContext();
   const [data, setData] = useState([]);
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
-    axios("https://jsonplaceholder.typicode.com/comments").then((res) => {
-      console.log(res.data);
-      setData(res.data);
-    });
-  };
-  const selectRow = {
-    mode: "checkbox",
-    clickToSelect: true,
-    clickToEdit: true,
+    console.log(articleData);
+    setData(articleData);
   };
   const columns = [
     {
-        dataField: "id",
+        dataField: "position",
         text: "ID",
         sort: true,
+        editable: false,
       },
     {
-      dataField: "email",
-      text: "Email",
-      sort: true,
-    },
-    {
-      dataField: "name",
-      text: "Name",
+      dataField: "title",
+      text: "Title",
       sort: true,
       editable: false,
     },
     {
-      dataField: "dropdown",
+      dataField: "publication_info.summary",
+      text: "Summary",
+      sort: true,
+      editable: false,
+    },
+    {
+      dataField: "snippet",
+      text: "snippet",
+      sort: true,
+      editable: false,
+    },
+    {
+      dataField: "status",
       text: "Status",
       editor: {
         type: Type.SELECT,
         options: [
           {
-            value: "Qualified",
-            label: "Qualified",
+            value: "Accepted",
+            label: "Accepted",
           },
           {
             value: "Pending",
             label: "Pending",
           },
           {
-            value: "Not Qualified",
-            label: "Not Qualified",
+            value: "Rejected",
+            label: "Rejected",
           },
         ],
       },
     },
   ];
+  const expandRow = {
+    showExpandColumn: true,
+    expandByColumnOnly: true,
+    renderer: row => (
+      <div>
+        <p>{ row.BibTex }</p>
+      </div>
+    )
+  };
 
   const options = {
     sizePerPage: 10,
@@ -72,19 +84,15 @@ function Table() {
     <div>
       <div className="App">
         <BootstrapTable
-          keyField="id"
+          keyField="position"
           data={data}
           columns={columns}
           striped
           hover
           condensed
           pagination={paginationFactory(options)}
-          cellEdit={cellEditFactory({
-            mode: "click",
-            blurToSave: true
-          })}
-          selectRow={selectRow}
-          filter={filterFactory()}
+          cellEdit={cellEditFactory({ mode: "click", blurToSave: true })}
+          expandRow={expandRow}
         />
         <ExportButton />
       </div>

@@ -55,7 +55,7 @@ function ExportButton() {
         return formattedStr + "\n\n";
     }
 
-    return <button onClick={handleClick}>Export</button>
+    return <button className="exportButton" onClick={handleClick}>Export</button>
 }
 
 export default ExportButton;

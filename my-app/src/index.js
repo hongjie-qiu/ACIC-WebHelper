@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 import TablePage from './BootstrapTable';
 import { AppProvider } from './contexts';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
