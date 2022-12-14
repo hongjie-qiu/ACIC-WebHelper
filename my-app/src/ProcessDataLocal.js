@@ -2,7 +2,7 @@ const fs = require('fs');
 const SerpApi = require('google-search-results-nodejs');
 const apiKey = "f9a84aee31e2b95791ce1ab913ac4b3e81c2f1950f6230d1d3914a308684e1ac";
 
-const keyword = "Artisanal and Small-Scale Gold Mining (ASGM): Management and Socioenvironmental Impacts in the Northern Amazon of Ecuador";
+const keyword = "Amazon";
 
 const { bibtex, parseBibFile } = require('bibtex');
 const INCORRECT_ENTRY_TYPES = ['booklet', 'manual', 'mastersthesis', 'proceedings', 'unpublished'];

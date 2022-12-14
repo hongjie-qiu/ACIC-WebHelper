@@ -1,16 +1,15 @@
+import data from "./Amazon.json"
+
 function ExportButton() {
     const handleClick = function (event) {
         // File export logic referenced from https://medium.com/front-end-weekly/text-file-download-in-react-a8b28a580c0d
-       
-        // example.json will be replaced by filter logic
-        const data = require("./example.json");
 
         let fileContent = "";
         for (let i = 0; i < data.length; i++) {
-            // if (data[i]["status"] === status) {
+             if (data[i]["status"] === "Accepted") {
                 let unformattedBibTex = data[i]["BibTex"];
                 fileContent += formatBibTex(unformattedBibTex);
-            // }
+             }
         }
 
         const element = document.createElement("a");

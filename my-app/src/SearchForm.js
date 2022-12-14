@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from './contexts.js';
 import "./SearchForm.css";
 
-
 const SearchForm = () => {
   const {setSearchTerm, setResultTitle} = useGlobalContext();
   const searchText = useRef('');

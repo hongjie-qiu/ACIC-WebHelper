@@ -4,18 +4,18 @@ import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import cellEditFactory, { Type } from "react-bootstrap-table2-editor";
 import ExportButton from "./ExportButton";
-import example from "./example.json";
-import { useGlobalContext } from './contexts';
+import jsonData from "./Amazon.json"
+//import { useGlobalContext } from './contexts';
 
 function Table() {
-  const {articleData} = useGlobalContext();
+  //const {articleData} = useGlobalContext();
   const [data, setData] = useState([]);
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
-    console.log(articleData);
-    setData(articleData);
+    console.log(jsonData);
+    setData(jsonData);
   };
   const columns = [
     {
