@@ -127,3 +127,16 @@ footer {
     bottom:0;
     right:0;
 }
+
+button {
+  background-color: black;
+  color: white;
+  padding: 5px 25px 5px 25px;
+  border: solid black;
+}
+
+button:hover {
+  border: solid;
+  background-color: white;
+  color: black;
+}

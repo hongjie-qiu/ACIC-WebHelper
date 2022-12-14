@@ -7,7 +7,7 @@ function ExportButton() {
 
         let fileContent = "";
         for (let i = 0; i < data.length; i++) {
-            // if (data[i]["status"] === 'Accepted') {
+            // if (data[i]["status"] === status) {
                 let unformattedBibTex = data[i]["BibTex"];
                 fileContent += formatBibTex(unformattedBibTex);
             // }
