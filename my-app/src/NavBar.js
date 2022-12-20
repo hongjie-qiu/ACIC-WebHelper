@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import {Navbar, NavItem } from 'react-bootstrap';
+import { signOut } from "firebase/auth";
+import {Button, Navbar, NavItem } from 'react-bootstrap';
 // import '../../css/App.css';
 
 // const navbar_color = {backgroundColor: '#ABEBFF'};
@@ -9,8 +9,18 @@ import {Navbar, NavItem } from 'react-bootstrap';
 // const tabs = {fontWeight: 'bold'};
 // const user = {color: 'white'};
 
-function NavBar() {
-    return (
+
+
+function NavBar(props) {
+  let auth = props.auth;
+  const handleClick = (event) => {
+    event.preventDefault();
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {});
+  };
+
+  return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/">ACIC Helper</Navbar.Brand>
@@ -31,6 +41,7 @@ function NavBar() {
             </NavItem>
         </Nav>
       </Container>
+      <Button className="signout" onClick={handleClick} aria-label="sign out">Sign Out</Button>
     </Navbar>
   );
 

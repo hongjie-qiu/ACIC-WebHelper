@@ -1,27 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import HomePage from './App';
-import NavBar from './NavBar';
-import TablePage from './BootstrapTable';
-import { AppProvider } from './contexts';
+import App from './App.js'
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyByykDjtI_Am-cdWFcjYM8vDWp1sSg2-g4",
+  authDomain: "acic-helper.firebaseapp.com",
+  projectId: "acic-helper",
+  storageBucket: "acic-helper.appspot.com",
+  messagingSenderId: "688448411801",
+  appId: "1:688448411801:web:8b70e0d025f49ed9b0c008"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AppProvider>
-    <NavBar/>
-     <BrowserRouter>
-       <Routes>
-        <Route path = "/" element = {<HomePage />} />
-        <Route path = "/results" element = {<TablePage />} />
-       </Routes>
-     </BrowserRouter>
-    </AppProvider>
-  </React.StrictMode>
+  <App />,
 );
 
 // If you want to start measuring performance in your app, pass a function
